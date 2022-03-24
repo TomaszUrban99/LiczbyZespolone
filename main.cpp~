@@ -1,0 +1,40 @@
+#include <iostream>
+#include <fstream>
+#include "LiczbaZespolona.hh"
+#include "WyrazenieZespolone.hh"
+#include "Statystyka.hh"
+
+using namespace std;
+
+int main(int argc, char **argv){
+    
+    LZ lz1, lz2, lz_user; // struktury przechoujace liczby zespolone, lz1 lz2- argumenty pobrane z pliku
+    // lz_user- liczba zespolona podana przez użytkownika
+    WZ wyrazenie; // struktura przechowujaca wczytane wyrazenie zespolone
+    ST stat; // struktura do przechowywania wyników testu
+
+    ifstream input(argv[1]);
+    if(input.fail()){
+        cerr<<"Blad: nie podano prawidlowego pliku"<<endl;
+        return -1;
+    }
+
+    while (!input.eof()){
+
+      input>>wyrazenie;
+        if(input.bad()){
+            cerr<<"Blad odczytu ";
+            return -1;
+        }
+        if(input.fail()){
+            cout<<"Bledne wyrazenie "<<endl;
+        }
+
+        cout<<"Podaj wynik wyrazenia: "<<wyrazenie<<endl;
+        cin>>lz_user;
+        cout<<lz_user;
+    }
+    
+    return 0;
+    
+}
